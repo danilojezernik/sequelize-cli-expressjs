@@ -1,11 +1,13 @@
 module.exports = {
-    async up(queryInterface, Sequelize) {
+    async up(queryInterface) {
         await queryInterface.bulkInsert('Users', [{
             firstName: 'Tester',
             lastName: 'Testing',
-            age: '30'
+            age: '30',
+            username: 'dani',
+            password: '123456',
         }].map((obj) => ({
-            ...obj, createdAt: new Date().toDateString(), updatedAt: new Date().toDateString(),
+            ...obj, createdAt: new Date(), updatedAt: new Date(),
         })), {});
 
     },

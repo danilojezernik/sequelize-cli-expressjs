@@ -1,9 +1,10 @@
 const express = require('express');
+
 const router = express.Router();
 
-/* GET index. */
+/* GET home page. */
 router.get('/', (req, res) => {
-  res.send('Sequelize-CLI & Express.js')
+  res.json({ title: 'Express' });
 });
 
 module.exports = router;

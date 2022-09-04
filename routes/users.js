@@ -2,7 +2,6 @@ const express = require('express');
 const db = require('../models');
 const router = express.Router();
 
-
 router.route('/')
     /* GET users */
     .get((req, res) => {
@@ -12,6 +11,9 @@ router.route('/')
     .post((req, res) => {
         db.Users.create(req.body)
             .then((data) => res.json(data))
+            .catch((err) => {
+                res.status(404).send(err)
+            })
     })
 
 router.route('/:id')
@@ -22,7 +24,7 @@ router.route('/:id')
     })
     /* UPDATE user */
     .post((req, res) => {
-        db.Users.create(req.body, { where: {id: req.params.id}})
+        db.Users.update(req.body, { where: {id: req.params.id}})
             .then((data) => res.json(data))
     })
     /* DELETE user */
